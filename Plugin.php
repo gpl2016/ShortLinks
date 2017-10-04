@@ -100,7 +100,7 @@
 			$text = empty($lastResult) ? $text : $lastResult;
 			if (($widget instanceof Widget_Archive)||($widget instanceof Widget_Abstract_Comments)) {
 				$options = Typecho_Widget::widget('Widget_Options');
-				preg_match_all('/<a(.*?)href="(.*?)"(.*?)>/',$text,$matches);
+				@preg_match_all('/<a(.*?)href="(.*?)"(.*?)>/',$text,$matches); 
 				if($matches){
 					foreach($matches[2] as $val){
 						if(strpos($val,'://')!==false && strpos($val,rtrim($options->siteUrl, '/'))===false && !preg_match('/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i',$val) && !preg_match($pOption->nonConvertList,$val)){
